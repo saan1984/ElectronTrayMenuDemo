@@ -4,7 +4,6 @@ var application = require('app'),
     Tray = require('tray'),
     Path = require('path'),
     MenuItem = require('menu-item');
-
 module.exports = {
     renderTrayIconMenu : function(){
         var trayIconPath = Path.join( __dirname , '../image/favicon.png'),
@@ -38,7 +37,12 @@ module.exports = {
                 application.quit();
             }
         }));
-        trayIconObject.setToolTip('ElectronTray Icon Menu Demo');
+        trayIconObject.setToolTip('Electron Tray Icon Menu Demo');
+        trayIconObject.displayBalloon({
+            title:"Tray Icon Menu Demo",
+            content:"Tray Icon Balloon for detail message.",
+            icon:Path.join( __dirname , '../image/favicon-32-32.png')
+        });
         trayIconObject.setContextMenu(trayContextMenu);
     }
 }
